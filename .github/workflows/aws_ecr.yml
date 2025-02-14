@@ -36,15 +36,15 @@ jobs:
         run: |
           # Build a docker container and
           # push it to ECR
-          docker build --platform Linux/amd64 --provenance false -t ${{ env.ECR_REPOSITORY }} .
-          docker tag ${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }} ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
-          docker ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
+          # docker build --platform Linux/amd64 --provenance false -t ${{ env.ECR_REPOSITORY }} .
+          # docker tag ${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }} ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
+          # docker ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
 
           # docker build --platform Linux/amd64 --provenance false -t flask_app_ecr .
           # docker tag flask_app_ecr:${{ github.sha }} 255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/flask_app_ecr:${{ github.sha }}
           # docker push 255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/ flask_app_ecr:${{ github.sha }}
           # echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
-          # docker build --platform Linux/amd64 --provenance false -t flask_app_ecr .
-          # docker tag flask_app_ecr:latest 255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/flask_app_ecr:latest
-          # docker push 255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/flask_app_ecr:latest
+          docker build --platform Linux/amd64 --provenance false -t flask_app_ecr .
+          docker tag flask_app_ecr:${{ github.sha }} 255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/flask_app_ecr:${{ github.sha }}
+          docker push 255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/flask_app_ecr:${{ github.sha }}
